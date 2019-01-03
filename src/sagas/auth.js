@@ -1,6 +1,7 @@
 import {
   call,
   fork,
+  takeEvery,
   put,
   race,
   take
@@ -56,7 +57,7 @@ function* handleLoginSubmit(){
   }
 }
 
-function handleLoginRequest(){
+function* handleLoginRequest(){
   while(true){ //replace with takeEvery()
     try {
       const { payload } = yield take(LOGIN_REQUEST);
@@ -64,12 +65,12 @@ function handleLoginRequest(){
       yield put(loginSuccess(user));
 
     } catch {
-      yield put(loginError(e))
+      yield put(loginError())
     }
   }
 }
 
-export default functions* watchAuth(getState){
+export default function* watchAuth(getState) {
   yield takeEvery(
     handleLoginRequest,
     handleLoginSubmit
