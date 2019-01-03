@@ -22,7 +22,7 @@ import {
   loginRequest,
   loginError,
   loginSuccess
-} from './actions/actions';
+} from './actions';
 
 import {
   startSubmit,
@@ -69,7 +69,9 @@ function handleLoginRequest(){
   }
 }
 
-export default functions* auth(getState){
-  yield fork(handleLoginRequest);
-  yield fork(handleLoginSubmit);
+export default functions* watchAuth(getState){
+  yield takeEvery(
+    handleLoginRequest,
+    handleLoginSubmit
+    );
 }

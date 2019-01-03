@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
 import {LOGIN_SUCCESS, LOGOUT} from './actions.js';
 
-const users = (state = {}, actions) => {
-  if(!actions) return state;
+const users = (state = {}, action) => {
+  if(!action) return state;
 
   switch(action.type) {
     case LOGIN_SUCCESS:
@@ -30,4 +30,5 @@ const auth = (state = null, action) => {
   }
 }
 
-export default combineReducers({users,auth});
+// const userAuth = combineReducers({ users, auth });
+export default combineReducers({ users, auth });
