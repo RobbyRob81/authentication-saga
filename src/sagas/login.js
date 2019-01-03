@@ -23,7 +23,6 @@ function login(emailAddress, password) {
   });
 }
 
-
 function* loginAsync(action) {
   try {
     const emailAddress = action.payload.emailAddress;
