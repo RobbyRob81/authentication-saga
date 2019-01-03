@@ -6,30 +6,26 @@ import {
   LOGOUT
 } from './types.js';
 
-/** ACTION CREATORS *//
-
-// onClick login
-// data: {email: string, pw: string}
-export loginSubmit = data => ({
-  type: loginSubmit,
+// trigger when submit is dispatched
+export const loginSubmit = data => ({
+  type: LOGIN_SUBMIT,
   payload: data
 })
 
-// data: {email: string, pw: string}
-export loginRequest = data => ({
+// trigger when login is dispatched
+export const loginRequest = data => ({
   type: LOGIN_REQUEST,
   payload: data
 })
 
-
-// login req dispatched
+// login has succeded
 export const loginSuccess = data => ({
-  type: loginSuccess,
+  type: LOGIN_SUCCESS,
   payload: data
 })
 
-// login failed
-const loginError = errors => ({
+// login has failed
+export const loginError = errors => ({
   type: LOGIN_ERROR,
   error: true,
   payload: errors

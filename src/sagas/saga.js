@@ -1,14 +1,13 @@
+// utils
+import {login} from './api'; //make
+
 import {
   call,
   fork,
-  takeEvery,
   put,
   race,
   take
 } from 'redux-saga/effects';
-
-// utils
-import {login} from './api'; //make
 
 // types
 import {

@@ -1,14 +1,12 @@
 import {
-  FORGOT_PASSWORD_SUCCESS,
   LOGIN_FAILURE,
   LOGIN_SUCCESS,
-  LOGOUT,
-  RESET_PASSWORD_SUCCESS,
-  SESSION_FAILURE
+  LOGOUT
 } from "../actions/types";
 
 const initialState = {
   user: {
+    auth: 1,
     isLoggedIn: false
   }
 };

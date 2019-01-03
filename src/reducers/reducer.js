@@ -1,6 +1,11 @@
 import {combineReducers} from 'redux';
 import {LOGIN_SUCCESS, LOGOUT} from './actions.js';
 
+/*
+Whenever a loginSuccess is dispatched,
+we will store the user and set the logged user id
+*/
+
 const users = (state = {}, action) => {
   if(!action) return state;
 

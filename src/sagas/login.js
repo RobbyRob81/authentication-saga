@@ -40,3 +40,6 @@ function* loginAsync(action) {
   }
 }
 
+export function* watchLogin() {
+  yield takeLatest(LOGIN, loginAsync)
+}
