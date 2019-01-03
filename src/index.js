@@ -1,9 +1,14 @@
+import 'babel-polyfill';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import {render} from 'react-dom';
+import Root from './components/Root';
+import configStore from './configureStore'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = configStore();
 
-serviceWorker.unregister();
+render(
+  <Root store={store} />,
+  document.getElementById('root')
+);
+
+
