@@ -5,15 +5,16 @@
   "dependencies": {
     "axios": "^0.18.0",
     "history": "^4.7.2",
+    "react": "^16.7.0",
     "react-loader": "^2.4.2",
     "react-redux": "^6.0.0",
-    "react-router-dom": "^4.2.2",
     "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
     "react-scripts": "2.1.2",
-    "react": "^16.7.0",
     "reactstrap": "^5.0.0-alpha.4",
-    "redux-saga": "^0.16.2",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.7",
+    "redux-saga": "^0.16.2",
     "reselect": "^3.0.1",
     "validator": "^9.1.2"
   },
@@ -24,15 +25,14 @@
     "test": "react-scripts test"
   },
   "devDependencies": {
+    "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.1.0",
-    "eslint": "^4.3.0",
-    "prettier": "^1.15.3",
-    "redux-devtools-extension": "^2.13.7"
+    "prettier": "^1.15.3"
   },
   "eslintConfig": {
     "extends": "react-app"
