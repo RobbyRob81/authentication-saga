@@ -33,9 +33,12 @@ class LoginForm extends React.PureComponent<Props, State>{
   };
 
   onChange = (e: SyntheticInputEvent<HTMLInputElement> ) =>
-    this.setState((prevState) => ({
-      data: { ...prevState.data, [e.target.name]: e.target.value }
-    }));
+    this.setState({
+      data: {
+        ...this.state.data,
+        [e.target.name]: e.target.value
+      }
+    });
 
   onSubmit = (e: SyntheticEvent<>) => {
     e.preventDefault();

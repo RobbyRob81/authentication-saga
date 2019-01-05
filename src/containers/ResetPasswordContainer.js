@@ -5,8 +5,8 @@ import ResetPasswordForm from "../components/resetPasswordForm/ResetPasswordForm
 import { validateToken, resetPassword } from "../actions/auth";
 
 type Props = {
-  validateToken: () => undefined,
-  resetPassword: () => undefined,
+  validateToken: ({token: string}) => any,
+  resetPassword: ({email: string}) => any,
   history: History,
   match: {
     params: {
@@ -22,7 +22,7 @@ type State = {
 
 type FormProps = {
   token: string,
-  password: string,
+  email: string
 }
 
 class ResetPasswordContainer extends React.Component<Props, State> {
