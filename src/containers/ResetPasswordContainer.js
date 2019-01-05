@@ -22,7 +22,7 @@ type State = {
 
 type FormProps = {
   token: string,
-  email: string
+  email?: string
 }
 
 class ResetPasswordContainer extends React.Component<Props, State> {

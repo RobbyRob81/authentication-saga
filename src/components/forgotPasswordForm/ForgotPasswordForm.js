@@ -63,7 +63,7 @@ class ForgotPasswordForm extends React.Component<Props, State> {
 
     return (
       <form onSubmit={this.onSubmit}>
-        {errors.global && (
+        {errors && errors.global && (
           <div key="error-global" className="alert alert-danger">{errors.global}</div>
         )}
 
@@ -76,10 +76,13 @@ class ForgotPasswordForm extends React.Component<Props, State> {
             value={data.email}
             onChange={this.onChange}
             className={
+              errors &&
               errors.email ? "form-control is-invalid" : "form-control"
             }
           />
-          <div className="invalid-feedback">{errors.email}</div>
+          {errors && errors.email &&
+            <div className="invalid-feedback">{errors.email}</div>
+          }
         </div>
 
         <button type="submit" className="password-recover-btn">

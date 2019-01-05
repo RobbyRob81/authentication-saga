@@ -4,7 +4,7 @@ type Props = {|
   token: string,
   submit: ({
     token: string,
-    password: string,
+    password: string
   }) => any
 |}
 
