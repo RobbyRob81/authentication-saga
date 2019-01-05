@@ -1,7 +1,20 @@
 [ignore]
 .*/node_modules/.*
+.*/src/api\.js
+.*/src/utils/.*
+.*/src/reducers/.*
+
+.*/src/sagas/.*
+.*/src/serviceWorker\.js
+.*/src/actions\.*
+.*/src/history\.js
+.*/src/schemas\.js
+.*/src/rootReducer\.js
+.*/src/rootSaga\.js
+
 .*/src/registerServiceWorker\.js
 .*/src/index\.js
+.*/src/configureStore\.js
 .*\test\.js
 
 [include]

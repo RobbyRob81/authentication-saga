@@ -4,14 +4,14 @@ import { Route, Redirect } from "react-router-dom";
 
 type Props = {
   isAuthenticated: boolean,
-  component: React.Node,
+  component: any,
 }
 
 const UserRoute = ({
   isAuthenticated,
   component: Component,
   ...rest
-  }:Props) => (
+  }: Props) => (
   <Route
     {...rest}
     render={props =>
