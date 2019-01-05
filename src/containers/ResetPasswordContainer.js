@@ -5,7 +5,7 @@ import ResetPasswordForm from "../components/resetPasswordForm/ResetPasswordForm
 import { validateToken, resetPassword } from "../actions/auth";
 
 type Props = {
-  validateToken: ({token: string}) => any,
+  validateToken: ({token?: string}) => any,
   resetPassword: ({email: string}) => any,
   history: History,
   match: {
