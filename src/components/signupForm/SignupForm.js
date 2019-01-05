@@ -1,36 +1,48 @@
-import * as React from 'react';
-import {Link} from 'react-router-dom';
-import Validator from 'validator';
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import isEmail from "validator/lib/isEmail";
+import { createUserRequest } from "../../actions/users";
 
 type Props = {|
   submit: ({
     email: string,
+    username: string,
     password: string
-    }) => any
+    }) => any,
+  serverErrors: any
 |}
 
 type State = {
   data: {
     email: string,
+    username: string,
     password: string
   },
   loading: boolean,
   errors: {
     email?: string,
-    global?: any,
-    password?: string,
+    global?: string,
+    username?: string,
+    password?: string
+
   }
 }
 
-class LoginForm extends React.PureComponent<Props, State>{
-   state = {
+class SignupForm extends React.Component<Props, State> {
+  state = {
     data: {
       email: "",
+      username: "",
       password: ""
     },
     loading: false,
     errors: {}
   };
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ errors: nextProps.serverErrors });
+  }
 
   onChange = (e: SyntheticInputEvent<HTMLInputElement> ) =>
     this.setState((prevState) => ({
@@ -57,21 +69,22 @@ class LoginForm extends React.PureComponent<Props, State>{
   validate = (data: {
       email: string,
       password: string,
-    })  => {
+      username: string
+    })  =>  {
     const errors = {};
-    if (!Validator.isEmail(data.email)) errors.email = "Invalid email";
+
+    if (!isEmail(data.email)) errors.email = "Invalid email";
     if (!data.password) errors.password = "Can't be blank";
+    if (!data.username) errors.username = "Can't be blank";
+
     return errors;
   };
-  render(){
+
+  render() {
     const { data, errors } = this.state;
 
     return (
       <form onSubmit={this.onSubmit}>
-        {errors.global && (
-          <div className="alert alert-danger">{errors.global}</div>
-        )}
-
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
@@ -81,10 +94,34 @@ class LoginForm extends React.PureComponent<Props, State>{
             value={data.email}
             onChange={this.onChange}
             className={
+              errors &&
               errors.email ? "form-control is-invalid" : "form-control"
             }
           />
-          <div className="invalid-feedback">{errors.email}</div>
+          {errors &&
+              errors.email &&
+              <div className="invalid-feedback">{errors.email}</div>
+          }
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            value={data.username}
+            onChange={this.onChange}
+            className={
+              errors &&
+              errors.username ? "form-control is-invalid" : "form-control"
+            }
+          />
+          {errors &&
+              errors.username &&
+              <div className="invalid-feedback">{errors.username}</div>
+          }
+          
         </div>
 
         <div className="form-group">
@@ -96,23 +133,34 @@ class LoginForm extends React.PureComponent<Props, State>{
             value={data.password}
             onChange={this.onChange}
             className={
+              errors &&
               errors.password ? "form-control is-invalid" : "form-control"
             }
           />
-          <div className="invalid-feedback">{errors.password}</div>
+          {errors &&
+              errors.password &&
+              <div className="invalid-feedback">{errors.password}</div>
+          }
         </div>
 
-        <button type="submit" className="btn btn-primary btn-block">
-          Login
+        <button type="submit" className="signup-btn">
+          Sign Up
         </button>
 
-        <small className="form-text text-center">
-          <Link to="/signup">Sign up</Link> if you don't have an account<br />
-          <Link to="/forgot_password">Forgot Password?</Link>
+        <small>
+          or <Link to="/login">LOGIN</Link> if you have an account
         </small>
       </form>
     );
   }
 }
 
-export default LoginForm;
+function mapStateToProps(state) {
+  return {
+    serverErrors: state.formErrors.signup
+  };
+}
+
+export default connect(mapStateToProps, { submit: createUserRequest })(
+  SignupForm
+);
